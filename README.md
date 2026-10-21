@@ -4,6 +4,8 @@ A fast, lightweight WordPress theme for UAE businesses, with technical SEO built
 
 **Live demo:** [Open in WordPress Playground](https://playground.wordpress.net/?blueprint-url=https://raw.githubusercontent.com/Stuart-Vision/marina-business-theme/main/blueprint.json) — runs a full WordPress site in your browser with demo content for a fictional Dubai building-materials trader. Admin login: `admin` / `password`.
 
+![Marina Business theme home page in the WordPress Playground demo](docs/demo-home.png)
+
 ## Why this theme
 
 Many business sites load heavy page builders and three SEO plugins, then struggle with Core Web Vitals. Marina keeps the front end small and puts the SEO basics directly into the theme:
