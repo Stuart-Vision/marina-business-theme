@@ -1,0 +1,166 @@
+/*
+Theme Name: Marina Business
+Theme URI: https://github.com/Stuart-Vision/marina-business-theme
+Author: Shanthosh Saisangar
+Author URI: https://stuart-shan.vercel.app
+Description: A fast, SEO-ready business theme for UAE companies. Built-in schema markup (LocalBusiness, BreadcrumbList, Article), meta descriptions, Open Graph tags and breadcrumbs, with automatic hand-off to Yoast SEO or Rank Math when either plugin is active. No jQuery, no web fonts, mobile-first.
+Version: 1.0.0
+Requires at least: 6.4
+Tested up to: 6.8
+Requires PHP: 8.0
+License: GNU General Public License v2 or later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: marina
+Tags: business, one-column, custom-menu, custom-logo, featured-images, translation-ready
+*/
+
+/* ---------- Design tokens ---------- */
+:root {
+	--ink: #14213d;
+	--ink-soft: #4a5568;
+	--brand: #0e7c86;
+	--brand-dark: #0a5c63;
+	--accent: #f2a541;
+	--bg: #ffffff;
+	--bg-soft: #f4f7f8;
+	--line: #dde3e6;
+	--radius: 10px;
+	--wrap: 1120px;
+	--font: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* ---------- Base ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+	margin: 0;
+	font-family: var(--font);
+	font-size: 1.0625rem;
+	line-height: 1.65;
+	color: var(--ink);
+	background: var(--bg);
+}
+img { max-width: 100%; height: auto; display: block; }
+a { color: var(--brand); text-underline-offset: 3px; }
+a:hover { color: var(--brand-dark); }
+h1, h2, h3 { line-height: 1.2; margin: 0 0 .6em; }
+h1 { font-size: clamp(2rem, 5vw, 3.1rem); }
+h2 { font-size: clamp(1.5rem, 3.4vw, 2.1rem); }
+h3 { font-size: 1.2rem; }
+p { margin: 0 0 1em; }
+
+.wrap { width: min(100% - 2rem, var(--wrap)); margin-inline: auto; }
+.screen-reader-text {
+	position: absolute !important; width: 1px; height: 1px; overflow: hidden;
+	clip: rect(1px, 1px, 1px, 1px); white-space: nowrap;
+}
+.skip-link:focus {
+	position: fixed; top: .5rem; left: .5rem; z-index: 100; width: auto; height: auto;
+	clip: auto; padding: .6rem 1rem; background: var(--ink); color: #fff; border-radius: 6px;
+}
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+
+/* ---------- Buttons ---------- */
+.btn {
+	display: inline-block; padding: .8rem 1.4rem; border-radius: 999px;
+	font-weight: 600; text-decoration: none; border: 2px solid transparent;
+}
+.btn-primary { background: var(--accent); color: var(--ink); }
+.btn-primary:hover { background: #e8962a; color: var(--ink); }
+.btn-ghost { border-color: rgba(255, 255, 255, .7); color: #fff; }
+.btn-ghost:hover { background: rgba(255, 255, 255, .12); color: #fff; }
+
+/* ---------- Header ---------- */
+.site-header { border-bottom: 1px solid var(--line); background: var(--bg); }
+.site-header .wrap {
+	display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+	min-height: 72px; flex-wrap: wrap;
+}
+.site-title { font-size: 1.25rem; font-weight: 700; margin: 0; }
+.site-title a { color: var(--ink); text-decoration: none; }
+.custom-logo { max-height: 48px; width: auto; }
+
+.menu-toggle {
+	display: none; background: none; border: 1px solid var(--line); border-radius: 8px;
+	padding: .45rem .8rem; font: inherit; color: var(--ink); cursor: pointer;
+}
+.primary-nav ul { list-style: none; margin: 0; padding: 0; display: flex; gap: 1.4rem; }
+.primary-nav a { color: var(--ink); text-decoration: none; font-weight: 500; }
+.primary-nav a:hover, .primary-nav .current-menu-item > a { color: var(--brand); }
+
+@media (max-width: 760px) {
+	.menu-toggle { display: inline-block; }
+	.primary-nav { width: 100%; display: none; padding-bottom: 1rem; }
+	.primary-nav.is-open { display: block; }
+	.primary-nav ul { flex-direction: column; gap: .6rem; }
+}
+
+/* ---------- Breadcrumbs ---------- */
+.breadcrumbs { font-size: .9rem; color: var(--ink-soft); padding: 1rem 0 0; }
+.breadcrumbs ol { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: .4rem; }
+.breadcrumbs li + li::before { content: "/"; margin-right: .4rem; color: var(--line); }
+
+/* ---------- Hero ---------- */
+.hero {
+	color: #fff;
+	background: linear-gradient(135deg, var(--ink) 0%, var(--brand-dark) 60%, var(--brand) 100%);
+	padding: clamp(3.5rem, 9vw, 6.5rem) 0;
+}
+.hero p { font-size: 1.2rem; max-width: 42rem; opacity: .92; }
+.hero .actions { display: flex; flex-wrap: wrap; gap: .8rem; margin-top: 1.6rem; }
+
+/* ---------- Sections & cards ---------- */
+.section { padding: clamp(2.5rem, 6vw, 4.5rem) 0; }
+.section-soft { background: var(--bg-soft); }
+.section-head { max-width: 40rem; margin-bottom: 2rem; }
+.grid { display: grid; gap: 1.25rem; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); }
+.card {
+	background: var(--bg); border: 1px solid var(--line); border-radius: var(--radius);
+	padding: 1.4rem; display: flex; flex-direction: column;
+}
+.card h3 a { color: var(--ink); text-decoration: none; }
+.card h3 a:hover { color: var(--brand); }
+.card .meta { font-size: .85rem; color: var(--ink-soft); margin-bottom: .5rem; }
+.card .more { margin-top: auto; font-weight: 600; }
+.card img { border-radius: 6px; margin-bottom: 1rem; aspect-ratio: 16 / 9; object-fit: cover; }
+
+/* ---------- Content ---------- */
+.content-area { padding: 2rem 0 4rem; }
+.entry { max-width: 46rem; }
+.entry-header { margin-bottom: 1.5rem; }
+.entry-meta { color: var(--ink-soft); font-size: .95rem; }
+.entry-content > * + * { margin-top: 1em; }
+.entry-content img { border-radius: var(--radius); }
+.pagination { margin-top: 2rem; display: flex; gap: .5rem; flex-wrap: wrap; }
+.pagination .page-numbers {
+	padding: .4rem .8rem; border: 1px solid var(--line); border-radius: 6px; text-decoration: none;
+}
+.pagination .current { background: var(--brand); color: #fff; border-color: var(--brand); }
+
+/* ---------- Contact strip & footer ---------- */
+.contact-strip { background: var(--accent); color: var(--ink); padding: 2rem 0; }
+.contact-strip .wrap { display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; justify-content: space-between; }
+.contact-strip h2 { margin: 0; font-size: 1.4rem; }
+
+.site-footer { background: var(--ink); color: #c9d3dc; padding: 3rem 0 1.5rem; font-size: .95rem; }
+.site-footer a { color: #fff; }
+.footer-cols { display: grid; gap: 2rem; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+.site-footer h2 { color: #fff; font-size: 1.05rem; }
+.site-footer address { font-style: normal; }
+.footer-nav ul { list-style: none; margin: 0; padding: 0; }
+.footer-nav li { margin-bottom: .35rem; }
+.copyright { border-top: 1px solid rgba(255, 255, 255, .15); margin-top: 2rem; padding-top: 1rem; }
+
+/* ---------- Search form ---------- */
+.search-form { display: flex; gap: .5rem; max-width: 28rem; }
+.search-form input[type="search"] {
+	flex: 1; padding: .7rem .9rem; border: 1px solid var(--line); border-radius: 8px; font: inherit;
+}
+.search-form button {
+	padding: .7rem 1.1rem; border: 0; border-radius: 8px; background: var(--brand); color: #fff;
+	font: inherit; font-weight: 600; cursor: pointer;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	* { scroll-behavior: auto !important; transition: none !important; }
+}
